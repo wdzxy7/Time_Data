@@ -15,7 +15,7 @@ if __name__ == '__main__':
 
     for i in range(1, 12):
         print(i)
-        for j in range(1000):
+        for j in range(100):
             sql = 'select sum(value) from select_data.small' + str(i) + ';'
             t1 = time.perf_counter()
             sql_con.cursor.execute(sql)
@@ -23,4 +23,4 @@ if __name__ == '__main__':
             diff = t2 - t1
             arr = DataFrame([[sql, data_sum[i], diff]], columns=['sql', 'data_sum', 'time'])
             df = df.append(arr, ignore_index=True)
-    df.to_csv('sum1.csv', index_label=False)
+    df.to_csv('sum2.csv', index_label=False)
