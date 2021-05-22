@@ -11,18 +11,20 @@ def create_table():
     # 建表
     sql = 'use unknown_data;'
     sql_con.cursor.execute(sql)
-    table1_sql = 'create table air ' \
-                 '( locationId varchar(255) null,' \
-                 'location   varchar(255) null,' \
-                 'city       varchar(255) null,' \
-                 'country    varchar(255) null,' \
-                 'utc        varchar(255) null,' \
-                 'local      varchar(255) null,' \
-                 'parameter  varchar(255) null,' \
-                 'value      varchar(255) null,' \
-                 'unit       varchar(255) null,' \
-                 'latitude   varchar(255) null,' \
-                 'longitude  varchar(255) null);'
+    table1_sql = 'CREATE TABLE `air` (' \
+                 '`locationId` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,' \
+                 '`location` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,' \
+                 '`city` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,' \
+                 '`country` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,' \
+                 '`utc` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,' \
+                 '`local` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,' \
+                 '`parameter` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,' \
+                 '`value` float(7,3) DEFAULT NULL,' \
+                 '`unit` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,' \
+                 '`latitude` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,' \
+                 '`longitude` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,' \
+                 '`id` int(11) NOT NULL AUTO_INCREMENT,' \
+                 'PRIMARY KEY (`id`))'
     try:
         sql_con.cursor.execute(table1_sql)
     except Exception as e:
@@ -35,18 +37,20 @@ def create_table():
     sql = 'use select_data;'
     sql_con.cursor.execute(sql)
     for i in range(1, 10):
-        air_sql = 'create table small' + str(i) + ' ' \
-                     '( locationId varchar(255) null,' \
-                     'location   varchar(255) null,' \
-                     'city       varchar(255) null,' \
-                     'country    varchar(255) null,' \
-                     'utc        varchar(255) null,' \
-                     'local      varchar(255) null,' \
-                     'parameter  varchar(255) null,' \
-                     'value      varchar(255) null,' \
-                     'unit       varchar(255) null,' \
-                     'latitude   varchar(255) null,' \
-                     'longitude  varchar(255) null);'
+        air_sql = 'create table small' + str(i) + ' (' \
+                  '`locationId` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,' \
+                  '`location` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,' \
+                  '`city` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,' \
+                  '`country` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,' \
+                  '`utc` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,' \
+                  '`local` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,' \
+                  '`parameter` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,' \
+                  '`value` float(7,3) DEFAULT NULL,' \
+                  '`unit` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,' \
+                  '`latitude` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,' \
+                  '`longitude` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,' \
+                  '`id` int(11) NOT NULL AUTO_INCREMENT,' \
+                  'PRIMARY KEY (`id`))'
         try:
             sql_con.cursor.execute(air_sql)
         except Exception as e:
