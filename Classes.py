@@ -13,8 +13,7 @@ class Test:
         self.ram = ram
         self.hz = hz
 
-    def insert_data(self, front=0, back=500000):
-        back = random.randint(600000, 900000)
+    def insert_data(self, front=0, back=random.randint(600000, 900000)):
         for i in range(1, 11):
             sql = 'TRUNCATE TABLE select_data.small' + str(i) + ';'
             self.sql_con.cursor.execute(sql)
@@ -32,7 +31,7 @@ class Test:
             self.data_sum[i] = res[0][0]
 
     def test(self, loop_time=10):
-        df = DataFrame([], columns=['hz', 'cpu', 'ram', 'sql', 'data_sum', 'time'])
+        df = DataFrame([], columns=['hz', 'cpu', 'ram', 'data_sum', 'sql', 'time'])
         for i in range(1, 11):
             print(i)
             for j in range(loop_time):
@@ -41,6 +40,7 @@ class Test:
                 self.sql_con.cursor.execute(sql)
                 t2 = time.perf_counter()
                 diff = t2 - t1
-                arr = DataFrame([[self.hz, self.cpu, self.ram, sql, self.data_sum[i], diff]], columns=['hz', 'cpu', 'ram', 'sql', 'data_sum', 'time'])
+                arr = DataFrame([[self.hz, self.cpu, self.ram, self.data_sum[i], sql, diff]],
+                                columns=['hz', 'cpu', 'ram', 'data_sum', 'sql', 'time'])
                 df = df.append(arr, ignore_index=True)
         df.to_csv('result' + self.run_time + '.csv', index=False)

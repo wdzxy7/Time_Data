@@ -36,7 +36,7 @@ def create_table():
         print(e)
     sql = 'use select_data;'
     sql_con.cursor.execute(sql)
-    for i in range(1, 10):
+    for i in range(1, 11):
         air_sql = 'create table small' + str(i) + ' (' \
                   '`locationId` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,' \
                   '`location` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,' \
