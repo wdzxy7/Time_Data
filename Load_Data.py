@@ -6,7 +6,8 @@ from torch.utils.data import DataLoader
 
 class Sample_Dataset(Dataset):
     def __init__(self):
-        data = np.loadtxt('result.csv', str, delimiter=',', skiprows=1)
+        # data = np.loadtxt('result/result1.csv', str, delimiter=',', skiprows=1)
+        data = np.loadtxt('changed.csv', float, delimiter=',', skiprows=1)
         self.len = data.shape[0] - 1
         self.x_data = torch.from_numpy(data[:, 0:5].astype(np.float32))
         self.y_data = torch.from_numpy(data[:, [-1]].astype(np.float32))
