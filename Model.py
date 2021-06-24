@@ -37,11 +37,10 @@ class LLModel3(torch.nn.Module):
         self.l4 = torch.nn.Linear(2, 1)
 
     def forward(self, x):
-        x = torch.sigmoid(self.l1(x))
-        x = torch.sigmoid(self.l2(x))
-        x = torch.sigmoid(self.l3(x))
-        # x = torch.sigmoid(self.l4(x))
-        # return x
+        x = self.l1(x)
+        x = self.l2(x)
+        x = torch.relu(x)
+        x = self.l3(x)
         return self.l4(x)
 
 
